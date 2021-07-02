@@ -1,0 +1,16 @@
+body {
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.3), 
+      rgba(0, 0, 0, 0.3)
+    ),
+    url(https://www.99images.com/photos/wallpapers/3d-abstract/dark-blue-aesthetic-tumblrandroid-iphone-desktop-hd-backgrounds-wallpapers-1080p-4k-t45mz.jpg?);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
