@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Box, Button, Grid, Typography, Paper, makeStyles } from '@material-ui/core';
-import { Mic, MicOff } from '@material-ui/icons';
+import { Mic, MicOff, Videocam, VideocamOff } from '@material-ui/icons';
 import { SocketContext } from '../Context';
 
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const VideoPlayer = () => {
-  const { name, callAccepted, myVideo, userVideo, callEnded, stream, call, isAudio, toggleAudio } = useContext(SocketContext);
+  const { name, callAccepted, myVideo, userVideo, callEnded, stream, call, isAudio, toggleAudio, isVideo, toggleVideo } = useContext(SocketContext);
   const classes = useStyles();
 
   return (
@@ -54,6 +54,9 @@ const VideoPlayer = () => {
           </Grid>
           <Box textAlign="center">
             <Button variant="contained" color="primary" startIcon={isAudio ? <Mic fontSize="large" /> : <MicOff fontSize="large" />} onClick={() => toggleAudio(!isAudio)} className={isAudio ? classes.button : classes.buttonred}>
+              Mic
+            </Button>
+            <Button variant="contained" color="primary" startIcon={isVideo ? <Videocam fontSize="large" /> : <VideocamOff fontSize="large" />} onClick={() => toggleVideo(!isVideo)} className={isAudio ? classes.button : classes.buttonred}>
               Mic
             </Button>
           </Box>

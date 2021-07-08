@@ -14,6 +14,7 @@ const ContextProvider = ({ children }) => {
   const [call, setCall] = useState({});
   const [me, setMe] = useState('');
   const [isAudio, setIsAudio] = useState(true);
+  const [isVideo, setIsVideo] = useState(true);
 
   const myVideo = useRef();
   const userVideo = useRef();
@@ -77,6 +78,11 @@ const ContextProvider = ({ children }) => {
     setIsAudio(value);
   };
 
+  const toggleVideo = (value) => {
+    stream.getVideoTracks()[0].enabled = value;
+    setIsVideo(value);
+  };
+
   const leaveCall = () => {
     setCallEnded(true);
 
@@ -101,6 +107,8 @@ const ContextProvider = ({ children }) => {
       answerCall,
       toggleAudio,
       isAudio,
+      toggleVideo,
+      isVideo,
     }}
     >
       {children}
