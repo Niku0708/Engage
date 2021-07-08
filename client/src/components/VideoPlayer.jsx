@@ -56,8 +56,8 @@ const VideoPlayer = () => {
             <Button variant="contained" color="primary" startIcon={isAudio ? <Mic fontSize="large" /> : <MicOff fontSize="large" />} onClick={() => toggleAudio(!isAudio)} className={isAudio ? classes.button : classes.buttonred}>
               Mic
             </Button>
-            <Button variant="contained" color="primary" startIcon={isVideo ? <Videocam fontSize="large" /> : <VideocamOff fontSize="large" />} onClick={() => toggleVideo(!isVideo)} className={isAudio ? classes.button : classes.buttonred}>
-              Mic
+            <Button variant="contained" color="primary" startIcon={isVideo ? <Videocam fontSize="large" /> : <VideocamOff fontSize="large" />} onClick={() => toggleVideo(!isVideo)} className={isVideo ? classes.button : classes.buttonred}>
+              Camera
             </Button>
           </Box>
         </Paper>
