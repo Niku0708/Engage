@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { Grid, Typography, Paper, makeStyles } from '@material-ui/core';
-
+import { Box, Button, Grid, Typography, Paper, makeStyles } from '@material-ui/core';
+import { Mic, MicOff } from '@material-ui/icons';
 import { SocketContext } from '../Context';
 
 const useStyles = makeStyles((theme) => ({
@@ -16,6 +16,23 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
     },
   },
+  button: {
+    marginTop: 5,
+    marginRight: 5,
+    '&:hover': {
+      backgroundColor: '#fff',
+      color: '#3c52b2',
+    },
+  },
+  buttonred: {
+    marginTop: 5,
+    marginRight: 5,
+    backgroundColor: 'red',
+    '&:hover': {
+      backgroundColor: '#fff',
+      color: '#3c52b2',
+    },
+  },
   paper: {
     padding: '10px',
     border: '2px solid black',
@@ -24,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const VideoPlayer = () => {
-  const { name, callAccepted, myVideo, userVideo, callEnded, stream, call } = useContext(SocketContext);
+  const { name, callAccepted, myVideo, userVideo, callEnded, stream, call, isAudio, toggleAudio } = useContext(SocketContext);
   const classes = useStyles();
 
   return (
@@ -35,6 +52,11 @@ const VideoPlayer = () => {
             <Typography variant="h5" gutterBottom>{name || 'Name'}</Typography>
             <video playsInline muted ref={myVideo} autoPlay className={classes.video} />
           </Grid>
+          <Box textAlign="center">
+            <Button variant="contained" color="primary" startIcon={isAudio ? <Mic fontSize="large" /> : <MicOff fontSize="large" />} onClick={() => toggleAudio(!isAudio)} className={isAudio ? classes.button : classes.buttonred}>
+              Mic
+            </Button>
+          </Box>
         </Paper>
       )}
       {callAccepted && !callEnded && (

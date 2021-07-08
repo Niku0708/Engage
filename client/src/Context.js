@@ -13,6 +13,7 @@ const ContextProvider = ({ children }) => {
   const [name, setName] = useState('');
   const [call, setCall] = useState({});
   const [me, setMe] = useState('');
+  const [isAudio, setIsAudio] = useState(true);
 
   const myVideo = useRef();
   const userVideo = useRef();
@@ -71,6 +72,11 @@ const ContextProvider = ({ children }) => {
     connectionRef.current = peer;
   };
 
+  const toggleAudio = (value) => {
+    stream.getAudioTracks()[0].enabled = value;
+    setIsAudio(value);
+  };
+
   const leaveCall = () => {
     setCallEnded(true);
 
@@ -93,6 +99,8 @@ const ContextProvider = ({ children }) => {
       callUser,
       leaveCall,
       answerCall,
+      toggleAudio,
+      isAudio,
     }}
     >
       {children}
