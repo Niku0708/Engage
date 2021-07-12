@@ -15,10 +15,13 @@ const ContextProvider = ({ children }) => {
   const [me, setMe] = useState('');
   const [isAudio, setIsAudio] = useState(true);
   const [isVideo, setIsVideo] = useState(true);
+  const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState('');
 
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
+  const room = 'room';
 
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
@@ -30,10 +33,26 @@ const ContextProvider = ({ children }) => {
 
     socket.on('me', (id) => setMe(id));
 
+    socket.emit('join', (room), () => {
+
+    });
+
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
-  }, []);
+
+    socket.on('message', ((mess) => {
+      setMessages([...messages, mess]);
+      // console.log(mess);
+      // console.log(messages);
+    }));
+  }, [messages]);
+
+  const sendMessage = () => {
+    if (message) {
+      socket.emit('sendMessage', message, name, () => setMessage(''));
+    }
+  };
 
   const answerCall = () => {
     setCallAccepted(true);
@@ -109,6 +128,10 @@ const ContextProvider = ({ children }) => {
       isAudio,
       toggleVideo,
       isVideo,
+      messages,
+      message,
+      setMessage,
+      sendMessage,
     }}
     >
       {children}
