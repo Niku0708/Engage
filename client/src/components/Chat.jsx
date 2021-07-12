@@ -35,7 +35,7 @@ const Chat = () => {
           <List className={classes.messageArea}>
             {messages && messages.map((currentMessage) => (
               <ListItem key={currentMessage.id}>
-                <Grid item md={12}>
+                <Grid item xs={12} md={12}>
                   {(currentMessage.user === name) && (<ListItemText align="right" primary={currentMessage.text} secondary={currentMessage.user} />)}
                   {!(currentMessage.user === name) && (<ListItemText align="left" primary={currentMessage.text} secondary={currentMessage.user} />)}
                 </Grid>
@@ -44,7 +44,7 @@ const Chat = () => {
           </List>
           <Divider />
           <Grid container style={{ padding: '5px' }}>
-            <Grid item xs={11} md={6}>
+            <Grid item xs={6} md={6}>
               <TextField
                 label="Message Box: "
                 value={message}
@@ -53,7 +53,7 @@ const Chat = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={1} md={6} align="right">
+            <Grid item xs={6} md={6} align="right">
               <Button variant="contained" color="secondary" startIcon={<SendIcon fontSize="large" />} onClick={(event) => sendMessage(event)} className={classes.margin}>
                 Send
               </Button>
