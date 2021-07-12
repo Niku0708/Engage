@@ -20,8 +20,14 @@ app.get('/', (req, res) => {
 io.on("connection", (socket) => {
 	socket.emit("me", socket.id);
 
+	socket.on('join', (room) => {
+		// console.log('user joined');
+		socket.join(room);
+	})
+
 	socket.on("disconnect", () => {
 		socket.broadcast.emit("callEnded")
+		// console.log(socket.id + "disconnected");
 	});
 
 	socket.on("callUser", ({ userToCall, signalData, from, name }) => {
@@ -30,6 +36,13 @@ io.on("connection", (socket) => {
 
 	socket.on("answerCall", (data) => {
 		io.to(data.to).emit("callAccepted", data.signal)
+	});
+
+	socket.on("sendMessage", (message, name, callback) => {
+		// console.log(message);
+		// console.log(name);
+		io.to('room').emit("message", { user: name, text: message });
+		callback();
 	});
 });
 
