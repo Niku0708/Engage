@@ -46,7 +46,7 @@ const ContextProvider = ({ children }) => {
       // console.log(mess);
       // console.log(messages);
     }));
-  }, [messages]);
+  }, []);
 
   const sendMessage = () => {
     if (message) {
