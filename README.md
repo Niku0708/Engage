@@ -11,7 +11,11 @@ LetsConnect offers the following features:
 * Muting/Unmuting the microphone
 * Turning the camera feed on and off
 
-## Screenshots
+## Demo
+### Video Demo
+[![LetsConnect Video Demo](http://img.youtube.com/vi/-Ab0dSJjni8/0.jpg)](http://www.youtube.com/watch?v=-Ab0dSJjni8)
+
+### Screenshots
 ![Main UI](https://user-images.githubusercontent.com/39586303/125440553-1a188166-69be-40d5-a367-0fe7fca9208b.png)
 ![Calling notification](https://user-images.githubusercontent.com/39586303/125440791-f20e4c11-98cd-4e40-8bbd-c1ae8c9c9595.png)
 ![Both camera Feeds](https://user-images.githubusercontent.com/39586303/125455937-09b9aa59-2f0d-49a3-bbfe-7e2c315c4ddc.png)
