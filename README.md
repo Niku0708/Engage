@@ -12,6 +12,9 @@ LetsConnect offers the following features:
 * Turning the camera feed on and off
 
 ## Screenshots
+![Main UI](https://user-images.githubusercontent.com/39586303/125440553-1a188166-69be-40d5-a367-0fe7fca9208b.png)
+![Calling notification](https://user-images.githubusercontent.com/39586303/125440791-f20e4c11-98cd-4e40-8bbd-c1ae8c9c9595.png)
+![Chat](https://user-images.githubusercontent.com/39586303/125441065-ec27e423-ec6a-4c82-ae0a-a310f72b77a8.png)
 
 ## Framework and Technologies used
 ### Frontend
