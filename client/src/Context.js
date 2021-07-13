@@ -40,19 +40,21 @@ const ContextProvider = ({ children }) => {
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
-
-    socket.on('message', ((mess) => {
-      setMessages([...messages, mess]);
-      // console.log(mess);
-      // console.log(messages);
-    }));
-  }, [messages]);
+  }, []);
 
   const sendMessage = () => {
     if (message) {
       socket.emit('sendMessage', message, name, () => setMessage(''));
     }
   };
+
+  useEffect(() => {
+    socket.on('message', ((mess) => {
+      setMessages([...messages, mess]);
+      // console.log(mess);
+      // console.log(messages);
+    }));
+  }, [messages]);
 
   const answerCall = () => {
     setCallAccepted(true);
